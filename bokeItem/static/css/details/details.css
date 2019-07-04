@@ -1,0 +1,10 @@
+
+.article p{
+    text-indent: 2em;
+}
+
+.ibox-content{
+    background-image: url(../../img/details/paopao.png);
+    background-size: 100% auto;
+}
+

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>boke</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/css/stysle.css" />
+
+    <!-- CSS Libs -->
+    <link rel="stylesheet" href="../../static/indexs/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/lib/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/lib/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/lib/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/lib/css/checkbox3.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/lib/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/lib/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/lib/css/select2.min.css">
+    <!-- CSS App -->
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../static/indexs/css/themes/flat-blue.css">
+    <link rel="Stylesheet" type="text/css" href="../../static/indexs/css/themes/aggsite.css" />
+
+    <link rel="stylesheet" href="../../static/indexs/css/themes/bootstrap.min.css">
+</head>
+
+<body class="flat-blue">
+    <div class="app-container">
+        <!--导航栏-->
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{url_for('boke')}}">首页 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="{{url_for('edit.edit_article')}}">发布</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left" action="{{url_for('search')}}" method="GET">
+                        <div class="form-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">查找</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user %}
+                        <li><a href="{{url_for('admin.admin_message')}}">
+                                <img class="adminImg" src="{{user.img}}" />
+                                {{user.username}}</a></li>
+                        <li><a href="{{url_for('login.logout')}}">注销</a></li>
+                        {% else %}
+                        <li><a href="{{url_for('login.login_index')}}">登录</a></li>
+                        <li><a href="{{url_for('register.register_index')}}">注册</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="main">
+
+            <!-- 内容页 -->
+
+            <div id="post_list">
+                {% for item in article %}
+                {%if item.isexit==0%}
+                <div class="post_item">
+
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="{{url_for('details.detail',article_id=item.id)}}" target="_blank">{{item.title}}</a></h3>
+                        <p class="post_item_summary">
+
+                            <a class="contentAll" href="{{url_for('details.detail',article_id=item.id)}}" target="_blank">
+                                <img class="contentImg" src="{{item.img}}"
+                                    alt="">
+                                <span class="contentList">{{item.content |safe}}</span>
+                            </a>
+                        </p>
+                        <div class="post_item_foot">
+                            <img width="48" height="48" class="pfs" src="{{item.user.img}}" alt="" />
+                            <span class="lightblue">{{item.user.username}}</span>
+                            发布于 {{item.time}}
+                            <span class="article_comment">
+                                <p class="">评论({{item.comments.__len__()}})</p>
+                            </span>
+                            <span class="article_view">
+                                <p class="">阅读({{item.readcount}})</p>
+                            </span>
+                            <!-- <span class="article_view agree"><a style="text-decoration:none;cursor:pointer;" class="gray">点赞(<span class="agreenum">0</span>)</a></span> -->
+                            <span class="article_view"><a href="{{url_for('agree',article_id=item.id)}}" class="gray">点赞({{item.agreecount}})</a></span>
+
+                            <span class="article_view">
+                                <p class="types">{{item.types}}</p>
+                                <!-- <input class="agreeId" type="hidden" name="" value="{{item.id}}"> -->
+                            </span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                {%endif%}
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="row content-container">
+
+            <div class="side-menu sidebar-inverse">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa fa-paper-plane"></div>
+                                <div class="title">Boke</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="{{url_for('boke')}}">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">类型</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="/searchType?t=娱乐">
+                                    <span class="icon fa fa-desktop"></span><span class="title">娱乐</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="/searchType?t=军事">
+                                    <span class="icon fa fa-table"></span><span class="title">军事</span>
+                                </a>
+
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="/searchType?t=网络">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">网络</span>
+                                </a>
+                            </li>
+
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="/searchType?t=技术">
+                                    <span class="icon fa fa-cubes"></span><span class="title">技术</span>
+                                </a>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="/searchType?t=美食">
+                                    <span class="icon fa fa-slack"></span><span class="title">美食</span>
+                                </a>
+
+                                <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="/searchType?t=医疗">
+                                    <span class="icon fa fa-archive"></span><span class="title">医疗</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="/searchType?t=旅游">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">旅游</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="/searchType?t=摄影">
+                                    <span class="icon fa fa-archive"></span><span class="title">摄影</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+</body>
+
+</html>

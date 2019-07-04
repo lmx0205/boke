@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> {{article.title}}</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!-- <link rel="shortcut icon" href="favicon.ico">  -->
+    <link href="/static/css/details/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <!-- <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/static/css/details/details.css">
+
+    <link href="/static/css/details/animate.css" rel="stylesheet">
+    <link href="/static/css/details/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="gohome">
+        <a class="animated bounceInUp" href="{{url_for('details.article_go_index')}}" title="返回首页">
+            <img src="../../static/img/details/门 (1).png" style='width: 26px;' alt="">
+        </a>
+    </div>
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="ibox">
+                    <div class="ibox-content">
+
+                        <div class="text-center article-title">
+                            <h1>
+                                {{article.title}}
+                            </h1>
+                            <h6>{{article.user.username}}</h6>
+                            <h6>{{article.time}}</h6>
+                            <!-- <a  href="{{url_for('details.playsound',article_id=article.id)}}"> -->
+                            <!-- 自动播放autoplay='true' loop -->
+                            <audio controls>
+                                <source src="../../static/mp3/{{article.id}}.mp3" type="audio/mpeg">
+                                <!-- <source src="happy birthday.ogg" type="audio/ogg"> -->
+                                <p>This browser does not support our audio format.</p>
+                            </audio>
+                            <!-- </a>     -->
+
+                        </div>
+                        <p>
+                            {{article.content}}
+                        </p>
+
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <h2>发表评论：</h2>
+                                <form action="{{url_for('details.add_comment')}}" method="POST">
+                                    <div class="form-group">
+                                        <input type="text" name="comment_content" class="form-control" placeholder="请填写评论">
+                                        <input type="hidden" name="article_id" value="{{article.id}}">
+                                    </div>
+
+                                    <div class="form-group" style="text-align: right ">
+                                        <button class="btn btn-primary">立即评论</button>
+                                    </div>
+                                </form>
+                                <h6>评论人数：({{comment_count}})</h6>
+
+                                <!-- <img style='height: 40px;'  class='agree'  src="../../static/img/details/点赞.png" alt=""> -->
+                                <!-- <span>(<span class="agreenum">{{article.agreecount}}</span>)</span> -->
+                                <div>
+                                    <a href="{{url_for('details.detail_agree',article_id=article.id)}}" class="gray">
+                                        <img style='height: 40px;' class='agree' src="../../static/img/details/点赞.png"
+                                            alt="">({{article.agreecount}})
+                                    </a>
+                                </div>
+
+
+                                <div class="social-feed-box">
+                                    {%for comment in article.comments%}
+                                    <div class="social-feed-box">
+                                        <div class="social-avatar">
+                                            <a href="{{url_for('details.article_go_admin')}}" class="pull-left">
+                                                <img alt="image" src="{{comment.user.img}}">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    {{comment.user.username}}
+                                                </a>
+                                                <small class="text-muted">{{comment.create_time}}</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="social-body">
+                                            <p>
+                                                {{comment.content}}
+                                            </p>
+                                        </div>
+
+                                        <form action="{{url_for('details.add_reply')}}" method="POST">
+                                            <div class="form-group" style="text-align: right ">
+                                                <button class="btn btn-primary">回复</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="reply_content" class="form-control"
+                                                    placeholder="回复">
+                                                <input type="hidden" name="comment_id" value="{{comment.id}}">
+                                                <input type="hidden" name="article_id" value="{{article.id}}">
+                                            </div>
+
+
+                                        </form>
+
+                                        {%for reply in comment.replys%}
+                                        <div class="social-feed-box">
+                                            <div class="social-avatar">
+                                                <a href="{{url_for('details.article_go_admin')}}" class="pull-left"
+                                                    style="margin-left: 50px;">
+                                                    <img alt="image" src="{{reply.user.img}}">
+                                                </a>
+                                                <div class="media-body" style="margin-left: 50px;">
+                                                    <a href="#">
+                                                        {{reply.user.username}}
+                                                    </a>
+                                                    <small class="text-muted">{{reply.time}}</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="social-body" style="margin-left: 100px;">
+                                                <p>
+                                                    {{reply.content}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {%endfor%}
+                                    </div>
+                                    {%endfor%}
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 全局js -->
+    <script src="/static/js/details/jquery.min.js?v=2.1.4"></script>
+    <script src="/static/js/details/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+    <!-- 自定义js -->
+    <script src="/static/js/details/content.js?v=1.0.0"></script>
+    <!-- <script>
+            var agree = document.querySelector('.agree');
+            var agreenum = document.querySelector('.agreenum');
+
+            agree.onclick = function () {
+                agreenum.textContent = parseInt(agreenum.textContent)+1
+            }
+    </script> -->
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    border-top: 0 !important;
+}
+
+body{
+    background: #f3f3f3;
+}
+
+.contain{
+    background: #fff;
+    width: 730px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.page-title{
+    text-align: center;
+}

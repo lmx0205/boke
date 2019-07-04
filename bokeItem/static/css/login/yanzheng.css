@@ -1,0 +1,48 @@
+
+.txt{
+    display: block;
+    width: 70%;
+    height: 35px;
+    margin: 0 auto;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0;
+    padding-left: 10px;
+}
+#vcode{
+    width: 40%;
+    height: 35px;
+    margin-left: 15%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0;
+    padding-left: 10px;
+}
+#code{
+    color: black;
+    /* background-color: #000000; */
+    font-size: 20px;
+    padding: 5px 35px 10px 35px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+
+#copyright{
+    width:100%;
+    text-align: center;
+    padding-top: 20px;
+    color: #e0e0e0;
+}
+
+#login-yanzheng{
+    display: flex;
+    justify-content: center;
+}
+
+.false{
+    color: red;
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+}

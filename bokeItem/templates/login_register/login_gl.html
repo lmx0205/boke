@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>登录注册</title>
+<link rel="stylesheet" href="../../static/css/login/normalize.css">
+<link rel="stylesheet" href="../../static/css/login/login.css">
+<link rel="stylesheet" href="../../static/css/login/sign-up-login.css">
+<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../static/css/login/inputEffect.css" />
+<link rel="stylesheet" href="../../static/css/login/tooltips.css" />
+<link rel="stylesheet" href="../../static/css/login/spop.min.css" />
+
+<script src="../../static/js/login/jquery.min.js"></script>
+<!-- <script src="../../static/js/login/snow.js"></script> -->
+<script src="../../static/js/login/jquery.pure.tooltips.js"></script>
+<script src="../../static/js/login/spop.min.js"></script>
+<script src="../../static/js/login/login.js"></script>
+
+<script>	
+	
+	//普通用户登录
+	function login(){
+		var username = $("#login-username").val(),
+			password = $("#login-password").val(),
+			validatecode = null,
+			flag = false;
+		//判断用户名密码是否为空
+		if(username == ""){
+			$.pt({
+        		target: $("#login-username"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"用户名不能为空"
+        	});
+			flag = true;
+		}
+		if(password == ""){
+			$.pt({
+        		target: $("#login-password"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"密码不能为空"
+        	});
+			flag = true;
+		}else{
+			if(password != repassword){
+				$.pt({
+	        		target: $("#register-repassword"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"两次输入的密码不一致"
+	        	});
+				flag = true;
+			}
+		}
+		//用户名只能是15位以下的字母或数字
+		var regExp = new RegExp("^[a-zA-Z0-9_]{1,15}$");
+		if(!regExp.test(username)){
+			$.pt({
+        		target: $("#login-username"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"用户名必须为15位以下的字母或数字"
+        	});
+			flag = true;
+		}
+		
+		if(flag){
+			return false;
+		}else{//登录
+			//调用后台登录验证的方法
+			alert('登录成功');
+			return false;
+		}
+	}
+	
+	
+	
+		
+	
+	
+
+	
+</script>
+<style type="text/css">
+html{
+	width: 100%; 
+	height: 100%;
+}
+
+body{
+
+	background-repeat: no-repeat;
+
+	background-position: center center #2D0F0F;
+
+	background-color: #00BDDC;
+
+	background-image: url(../../static/img/login/DB.jpg);
+
+	background-size: 100% 100%;
+
+}
+
+.snow-container { 
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%; 
+	pointer-events: none; 
+	z-index: 100001; 
+}
+
+</style>
+</head>
+<body>
+	<!-- 雪花背景 -->
+	<div class="snow-container"></div>
+	<!-- 登录控件 -->
+	<div id="login">
+		<input id="tab-1" type="radio" name="tab" class="sign-in hidden" checked />
+		<input id="tab-2" type="radio" name="tab" class="sign-up hidden" />
+		<input id="tab-3" type="radio" name="tab" class="sign-out hidden" />
+		<div class="wrapper">
+			<a id="fanhui" href='{{url_for("boke")}}'>返回首页</a>
+			<!-- 登录页面 -->
+			<div class="login sign-in-htm">
+				<form class="container offset1 loginform" method="POST">
+					<!-- 猫头鹰控件 -->
+					<div id="owl-login" class="login-owl">
+						<div class="hand"></div>
+						<div class="hand hand-r"></div>
+						<div class="arms">
+							<div class="arm"></div>
+							<div class="arm arm-r"></div>
+						</div>
+					</div>
+					<div class="pad input-container">
+						<div>管理员登录</div>
+						<section class="content">
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" name="username" type="text" id="forget-username" autocomplete="off" placeholder="请输入用户名"/>
+								<label class="input__label input__label--hideo" for="forget-username">
+									<i class="fa fa-fw fa-user icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" name="pw" type="password" id="forget-password" placeholder="请输入密码" tabindex="2" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="login-password">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							
+						</section>
+					</div>
+					<div class="form-actions">
+						<a class="btn pull-left btn-link text-muted" href='{{url_for("login.login_index")}}'href="login.html">返回登录</a>
+						<input class="btn btn-primary" type="submit" onClick="forget()" value="管理员登录" 
+							style="color:white;"/>
+					</div>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

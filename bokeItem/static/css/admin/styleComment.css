@@ -1,0 +1,87 @@
+
+
+
+.main .right .container{
+	overflow: scroll;
+}
+
+
+.main .right .container .no-doc{
+	text-align: left;
+	width: 100%;
+	height:390px;
+}
+
+
+.main .right .container .no-doc .self{
+	position: relative;
+	height: 70px;
+	border-top: 20px;
+}
+.main .right .container .no-doc .self img{
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	padding-top: 5px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-left: 5px;
+}
+.main .right .container .no-doc .self .p1{
+	position: absolute;
+	left: 100px;
+	top: 20px;
+	color: #eb7350;
+}
+.main .right .container .no-doc .self .p2{
+	position: absolute;
+	left: 160px;
+	top: 20px;
+}
+.main .right .container .no-doc .self h3{
+	position: absolute;
+	left: 100px;
+	top: 50px;
+}
+
+
+
+
+.main .right .container .no-doc .commentList{
+	position: relative;
+	width: 100%;
+	height:110px;
+}
+.main .right .container .no-doc .commentList img{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 10%;
+	padding-top: 5px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	top: 15px;
+	left: 35px;
+}
+.main .right .container .no-doc .commentList .p1{
+	position: absolute;
+	left: 100px;
+	top: 20px;
+	color: #eb7350;
+}
+.main .right .container .no-doc .commentList .p2{
+	position: absolute;
+	left: 100px;
+	top: 40px;
+}
+.main .right .container .no-doc .commentList div{
+	position: absolute;
+	left: 75px;
+	top: 63px;
+	width: 90%;
+	height: auto;
+	text-indent:25px;
+}

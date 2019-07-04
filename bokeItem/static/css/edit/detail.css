@@ -1,0 +1,30 @@
+.question-info{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.answer-list li{
+    list-style: none;
+    border-bottom: 1px solid #eeeeee;
+    padding: 10px 0;
+}
+.user-info{
+    font-size: 16px;
+    color: #9b9b9b;
+}
+
+.user-info img{
+    width: 38px;
+    height: 38px;
+    border-radius: 20%;
+}
+.user-info .username{
+    margin-left: 15px;
+}
+.user-info .create-time{
+    float: right;
+    line-height: 38px;
+}
+.answer-content{
+    margin-left: 60px;
+}

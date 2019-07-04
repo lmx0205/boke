@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>后台用户中心</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/admin/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/admin/style.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/admin/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/admin/admin_mydata.css">
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="bar">
+				<div class="w1200">
+					<span class="l">问答平台<font>用户中心</font></span>
+					<span class="r"><a href="{{url_for('boke')}}"><i class="icon iconfont icon-dianyuan"></i>退出</a></span>
+				</div>
+			</div>
+			<div class="user-info">
+				<div class="w1200">
+					<div class="user-headface">
+						<img src="{{user.img}}"/>
+					</div>
+					<div class="user-account">
+						<p class="tip">下午好，{{user.username}}</p>
+					</div>
+					<div class="user-modify">
+						<a href="{{ url_for('admin.editdata') }}">修改资料></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main w1200">
+			<div class="left">
+				<ul>
+					<li>
+						<a href="{{url_for('admin.admin_message')}}">
+							<i class="icon iconfont icon-lingdang"></i>
+							消息
+						</a>
+					</li>
+					<li>
+						<a href="{{url_for('admin.admin_article')}}">
+							<i class="icon iconfont icon-fangzidichan"></i>
+							文章
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="icon iconfont icon-wenda"></i>
+							问答
+						</a>
+					</li>
+					<li>
+						<a href="{{url_for('admin.admin_friend')}}">
+							<i class="icon iconfont icon-icon--"></i>
+							好友
+						</a>
+					</li>
+					<li>
+						<a href="{{url_for('admin.commentContent')}}">
+							<i class="icon iconfont icon-pinglun"></i>
+							评论
+						</a>
+					</li>
+					<li>
+						<a href="{{ url_for('admin.mydata') }}">
+							<i class="icon iconfont icon-geren"></i>
+							个人资料
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="icon iconfont icon-jilu"></i>
+							记录
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="tap">
+					<span>修改资料</span>
+				</div>
+				<div class="container">
+					<div class="no-doc">
+						<form action="" method="POST" enctype="multipart/form-data">
+								<div class="form-group imgtext">
+									<label class="col-sm-2 control-label img"><img src="{{user.img}}"/></label>
+									<div class="col-sm-2 ">
+									<label for="file" class=" btn btn-default">修改头像</label>
+									<input type="file" name="image" id="file" style="display:none">
+									</div>	
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1"></label>
+									<input type="text" class="form-control" placeholder="修改名称" name="username">
+								</div>
+                            <button class="btn btn-primary btn-block" type="submit">保存数据</button>
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

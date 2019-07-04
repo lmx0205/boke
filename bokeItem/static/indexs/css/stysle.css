@@ -1,0 +1,91 @@
+.sidebar-inverse {
+  top: 0px;
+  left: 0px;
+}
+
+.contentList {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 4 !important;
+  overflow: hidden !important;
+  color: #666d71 !important;
+  padding-left: 24px;
+  padding-right: 24px;
+  line-height: 42px;
+}
+
+.navbar-inverse {
+  position: fixed !important;
+  top: 0;
+  line-height: 30px;
+  width: 100% !important;
+}
+
+#main {
+  padding-top: 70px !important;
+}
+
+.form-control {
+  margin-top: 5.5px;
+  margin-right: 10px;
+}
+
+.post_item_summary a {
+  text-decoration-line: none !important;
+}
+
+.titlelnk {
+  text-decoration-line: none !important;
+  /* color: black !important; */
+  font-family: '宋体' !important;
+  font-size: 18px !important;
+}
+
+.post_item {
+  padding: 10px;
+  border: 1px solid #cceff5;
+  border-radius: 5px;
+}
+
+.adminImg {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+}
+
+.contentImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.post_item_foot {
+  line-height: 48px !important;
+}
+
+.pfs {
+  border-radius: 100% !important;
+}
+
+.contentAll {
+  display: flex;
+
+}
+
+.post_item_foot {
+  margin-top: 15px;
+  display: flex !important;
+}
+
+.article_view {
+  margin-left: 15px !important;
+}
+
+.types {
+  color: #105cb6 !important;
+}
+
+.lightblue {
+  color: #105cb6 !important;
+  margin-right: 12px !important;
+}

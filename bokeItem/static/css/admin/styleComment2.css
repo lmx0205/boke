@@ -1,0 +1,86 @@
+.main .right .container{
+	overflow: scroll;
+}
+.main .right .container .no-doc{
+	text-align: left;
+	width: 100%;
+	height:390px;
+}
+
+
+.main .right .container .no-doc .self{
+	display: flex;
+	height: 70px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	background-color: #FFFAFA;
+}
+.main .right .container .no-doc .self .img{
+	width: 10% ;
+}
+.main .right .container .no-doc .self .img img{
+	display: inline-block;
+	width: 70px;
+	height: 70px;
+	padding-top: 0px;
+	padding-left: 0px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px #62ab00 solid;
+	border-radius: 50%;
+}
+.main .right .container .no-doc .self .userself{
+	width: 90%;
+	font-size: 15px;
+}
+.main .right .container .no-doc .self .userself .span1{
+	display: inline-block;
+	padding-top: 11px;
+	color: #eb7350;
+	margin-right: 15px;
+}
+.main .right .container .no-doc  .self .userself .span2{}
+.main .right .container .no-doc .self .userself .selftitle{}
+.main .right .container .no-doc .self .userself .selftitle p{
+	padding-top: 12px;
+	color: #62ab00;
+}
+
+
+.main .right .container .no-doc .commentList{
+	background-color: #FFFFF0;
+	margin-bottom: 20px;
+}
+.main .right .container .no-doc .commentList .else{
+	display: flex;
+	height: 50px;
+	margin-top: 10px;
+}
+.main .right .container .no-doc .commentList .else .img{
+	width: 10% ;
+	border-radius: 50%;
+}
+.main .right .container .no-doc .commentList .else .img img{
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	padding-top: 0px;
+	padding-left: 0px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px #62ab00 solid;
+	border-radius: 50%;
+	margin-left: 28px;
+}
+.main .right .container .no-doc .commentList .else .userself .p1{
+	padding-top: 4px;
+}
+.main .right .container .no-doc .commentList .else .userself .p2{
+	padding-top: 4px;
+}
+.main .right .container .no-doc .commentList .title{
+	margin-left: 70px;
+	text-indent:25px;
+}
